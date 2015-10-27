@@ -17,6 +17,11 @@ struct Ship {
     let isVertical: Bool
 }
 
+struct Mine: _Mine_ {
+    let location: GridLocation
+    let explosionText: String
+}
+
 class ControlCenter {
     
     func addShipsAndMines(human: Human) {
@@ -31,6 +36,12 @@ class ControlCenter {
         human.addShipToGrid(mediumShip2)
         human.addShipToGrid(largeShip)
         human.addShipToGrid(extraLargeShip)
+        
+        let mine1 = Mine(location: GridLocation(x: 3, y: 5), explosionText: "Kaboom")
+        let mine2 = Mine(location: GridLocation(x: 6, y: 5), explosionText: "It has exploded")
+        
+        human.addMineToGrid(mine1)
+        human.addMineToGrid(mine2)
     }
     
     func calculateFinalScore(gameStats: GameStats) -> Int {
